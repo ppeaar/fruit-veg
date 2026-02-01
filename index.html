@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit & Vegetable Recognition System</title>
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍎 Smart Self-Checkout System</h1>
+            <p class="subtitle">AI-Powered Fruit & Vegetable Recognition</p>
+        </header>
+
+        <main>
+            <!-- Instructions Card -->
+            <div class="card instructions-card">
+                <h2>📝 How to Use</h2>
+                <ol>
+                    <li>Allow camera access when prompted</li>
+                    <li>Hold a fruit or vegetable in front of the camera</li>
+                    <li>Wait for the AI to identify the item</li>
+                    <li>View the prediction and confidence score</li>
+                </ol>
+            </div>
+
+            <!-- Camera Section -->
+            <div class="card camera-card">
+                <h2>📹 Live Camera Feed</h2>
+                <div class="camera-container">
+                    <div id="webcam-container">
+                        <video id="webcam" autoplay playsinline></video>
+                        <canvas id="canvas" style="display: none;"></canvas>
+                    </div>
+                    <div class="camera-controls">
+                        <button id="start-button" class="btn btn-primary">Start Camera</button>
+                        <button id="stop-button" class="btn btn-secondary" disabled>Stop Camera</button>
+                    </div>
+                    <div id="status" class="status">Click "Start Camera" to begin</div>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="card upload-card">
+                <h2>📤 Upload Image</h2>
+                <div class="upload-container">
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                    <button id="upload-button" class="btn btn-primary">Choose Image</button>
+                    <div id="upload-preview"></div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card results-card">
+                <h2>🎯 Prediction Results</h2>
+                <div id="prediction-container">
+                    <div class="no-prediction">
+                        <p>No predictions yet. Start the camera or upload an image!</p>
+                    </div>
+                    <div id="predictions" style="display: none;">
+                        <div class="prediction-item main-prediction">
+                            <div class="prediction-label">
+                                <span class="item-name" id="top-prediction">-</span>
+                                <span class="confidence" id="top-confidence">-</span>
+                            </div>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" id="top-bar"></div>
+                            </div>
+                        </div>
+                        <div id="other-predictions"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="card stats-card">
+                <h2>📊 Session Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Predictions</span>
+                        <span class="stat-value" id="total-predictions">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Average Confidence</span>
+                        <span class="stat-value" id="avg-confidence">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Processing Time</span>
+                        <span class="stat-value" id="processing-time">0ms</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>MIS 451 - AI for Business Applications Project</p>
+            <p class="footer-note">Powered by Google Teachable Machine & TensorFlow.js</p>
+        </footer>
+    </div>
+
+    <!-- Load TensorFlow.js and Teachable Machine libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
